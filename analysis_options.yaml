@@ -1,0 +1,8 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    # Ложные срабатывания анализатора для @JsonKey в freezed-моделях.
+    # freezed читает аннотации через build_runner, анализатор этого не понимает.
+    # https://github.com/rrousselGit/freezed/issues/488
+    invalid_annotation_target: ignore
