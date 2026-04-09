@@ -13,20 +13,8 @@
 - [x] Offline-баннер + retry-кнопки на всех экранах
 - [x] debugLogDiagnostics: kDebugMode (только в debug)
 - [x] flutter analyze: 0 ошибок
-
----
-
-## 🟡 Важно (ухудшает UX или DevX)
-
-- [ ] **Исправить deprecation-предупреждения** (~46 штук)
-  - `withOpacity()` → `.withValues(alpha: ...)`
-  - `surfaceVariant` → `surfaceContainerHighest`
-  - Файлы: dashboard, budgets, transactions, statistics, accounts
-
-- [ ] **CI/CD** (GitHub Actions)
-  - `flutter analyze` + `flutter test` на каждый PR
-  - Build Android appbundle
-  - Build iOS (no-codesign)
+- [x] Deprecation warnings: withOpacity → withValues, _ErrorWidget удалён, use_build_context_synchronously исправлен
+- [x] CI/CD: GitHub Actions — analyze + test + build Android/iOS (зелёный)
 
 ---
 
@@ -37,9 +25,7 @@
   - Стратегия: local-first, sync при подключении
   - Сложность: высокая
 
-- [ ] **Статистика по периодам**
-  - Выбор: неделя / месяц / квартал / год
-  - fl_chart уже подключён
+- [x] **Статистика по периодам** — переключатель + bar chart (доходы/расходы)
 
 - [ ] **Экспорт данных** в CSV
 

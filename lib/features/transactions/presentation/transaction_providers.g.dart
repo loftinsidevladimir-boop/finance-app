@@ -195,6 +195,159 @@ class _MonthlyTransactionsProviderElement
   int get limit => (origin as MonthlyTransactionsProvider).limit;
 }
 
+String _$dateRangeTransactionsHash() =>
+    r'6b4140b3873f541c498d5e10faa93104f95a0caf';
+
+/// See also [dateRangeTransactions].
+@ProviderFor(dateRangeTransactions)
+const dateRangeTransactionsProvider = DateRangeTransactionsFamily();
+
+/// See also [dateRangeTransactions].
+class DateRangeTransactionsFamily
+    extends Family<AsyncValue<List<Transaction>>> {
+  /// See also [dateRangeTransactions].
+  const DateRangeTransactionsFamily();
+
+  /// See also [dateRangeTransactions].
+  DateRangeTransactionsProvider call({
+    required DateTime startDate,
+    required DateTime endDate,
+  }) {
+    return DateRangeTransactionsProvider(
+      startDate: startDate,
+      endDate: endDate,
+    );
+  }
+
+  @override
+  DateRangeTransactionsProvider getProviderOverride(
+    covariant DateRangeTransactionsProvider provider,
+  ) {
+    return call(
+      startDate: provider.startDate,
+      endDate: provider.endDate,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'dateRangeTransactionsProvider';
+}
+
+/// See also [dateRangeTransactions].
+class DateRangeTransactionsProvider
+    extends AutoDisposeFutureProvider<List<Transaction>> {
+  /// See also [dateRangeTransactions].
+  DateRangeTransactionsProvider({
+    required DateTime startDate,
+    required DateTime endDate,
+  }) : this._internal(
+          (ref) => dateRangeTransactions(
+            ref as DateRangeTransactionsRef,
+            startDate: startDate,
+            endDate: endDate,
+          ),
+          from: dateRangeTransactionsProvider,
+          name: r'dateRangeTransactionsProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$dateRangeTransactionsHash,
+          dependencies: DateRangeTransactionsFamily._dependencies,
+          allTransitiveDependencies:
+              DateRangeTransactionsFamily._allTransitiveDependencies,
+          startDate: startDate,
+          endDate: endDate,
+        );
+
+  DateRangeTransactionsProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.startDate,
+    required this.endDate,
+  }) : super.internal();
+
+  final DateTime startDate;
+  final DateTime endDate;
+
+  @override
+  Override overrideWith(
+    FutureOr<List<Transaction>> Function(DateRangeTransactionsRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: DateRangeTransactionsProvider._internal(
+        (ref) => create(ref as DateRangeTransactionsRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        startDate: startDate,
+        endDate: endDate,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<List<Transaction>> createElement() {
+    return _DateRangeTransactionsProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is DateRangeTransactionsProvider &&
+        other.startDate == startDate &&
+        other.endDate == endDate;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, startDate.hashCode);
+    hash = _SystemHash.combine(hash, endDate.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin DateRangeTransactionsRef
+    on AutoDisposeFutureProviderRef<List<Transaction>> {
+  /// The parameter `startDate` of this provider.
+  DateTime get startDate;
+
+  /// The parameter `endDate` of this provider.
+  DateTime get endDate;
+}
+
+class _DateRangeTransactionsProviderElement
+    extends AutoDisposeFutureProviderElement<List<Transaction>>
+    with DateRangeTransactionsRef {
+  _DateRangeTransactionsProviderElement(super.provider);
+
+  @override
+  DateTime get startDate => (origin as DateRangeTransactionsProvider).startDate;
+  @override
+  DateTime get endDate => (origin as DateRangeTransactionsProvider).endDate;
+}
+
 String _$transactionListNotifierHash() =>
     r'e06f66ea4e192be6cbafe4cd199be05736cd845a';
 

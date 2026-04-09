@@ -77,3 +77,14 @@ class TransactionSearchNotifier extends _$TransactionSearchNotifier {
     state = AsyncValue.data(await repo.searchTransactions(query));
   }
 }
+
+// Транзакции за произвольный диапазон дат
+@riverpod
+Future<List<Transaction>> dateRangeTransactions(
+  DateRangeTransactionsRef ref, {
+  required DateTime startDate,
+  required DateTime endDate,
+}) async {
+  final repo = ref.watch(transactionRepositoryProvider);
+  return repo.getTransactions(from: startDate, to: endDate, limit: 500);
+}
